@@ -1,8 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ClienteController;
+use App\Http\Controllers\Api\GrupoController;
+use App\Http\Controllers\Api\GerenteController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/cliente', [ClienteController::class, 'index']);
+Route::resource('/cliente', ClienteController::class);
+
+Route::get('/grupo', [GrupoController::class, 'index']);
+Route::get('/clientes-grupo/{idGrupo}', [GrupoController::class, 'findClitesGrupo']);
