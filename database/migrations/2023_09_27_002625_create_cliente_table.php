@@ -12,14 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('cpf', 11)->unique();
-            $table->string('cnpj', 14)->unique();
-            $table->date('data_cadastro');
-            $table->string('email');
-            $table->integer('status')->default(1);
-            $table->timestamps();
+        $table->increments('id');
+        $table->string('nome');
+        $table->string('CPF', 14);
+        $table->string('CNPJ', 14);
+        $table->string('telefone', 15);
+        $table->string('endereco');
+        $table->string('cidade');
+        $table->string('UF',2);
+        $table->timestamp('created_at')->useCurrent();
+        $table->timestamp('updated_at')->useCurrent();
         });
     }
 

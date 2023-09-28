@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 
+
+
 use Illuminate\Support\Str;
 
 
@@ -23,16 +25,15 @@ class ClientesFactory extends Factory
 
     public function definition(): array
     {
-        DB::table('clientes')->insert([            
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            "cnpj"=> fake()->cnpj(),
-            "cpf"=> fake()->cpf(),
-            "status"=> fake()->status(),
-            "data_cadastro"=> fake()->data_cadastro(),
-            'updated_at'=>Carbon::now(),
-            'created_at'=>Carbon::now(),
-        ]);
-}
+        return [
+            'nome' => fake()->name(),
+            'CPF' => $faker->cpf,
+            'CNPJ' => $faker->cnpj(false),
+            'telefone' => sprintf('(0%s) %s', $faker->areaCode, $faker->landline),
+            'endereco' => $faker->address,
+            'cidade' => $faker->city,
+            'UF' => $faker->stateAbbr,
+        ];
+                  
+    }
 }

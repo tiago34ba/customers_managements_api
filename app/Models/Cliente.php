@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+
+
+
 class Cliente extends Model
 {
+
     use Traits\Scope;
 
     protected $guarded = ['id'];
@@ -19,12 +25,12 @@ class Cliente extends Model
      */
     protected $fillable = [
         "nome",
-        "cnpj",
-        "cpf",
-        "data_cadastro",
-        "email",
-        "status"
-               
+        "CPF",
+        "CNPJ",
+        "telefone",
+        "endereco",
+        "cidade",
+        "UF"               
     ];
 
       /**
