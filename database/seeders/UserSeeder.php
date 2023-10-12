@@ -18,7 +18,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        
+        $faker = \Faker\Factory::create('pt_BR');
+        for ($i=0; $i<100; $i++) {
         DB::table('users')->insert([
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
@@ -29,4 +30,5 @@ class UserSeeder extends Seeder
             'created_at'=>Carbon::now(),
         ]);
     }
+}
 }
