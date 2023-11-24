@@ -26,7 +26,7 @@ class PlansSeeder extends Seeder
         for ($i=0; $i<500; $i++) {
             DB::table('plan_')->insert([
                 'name' => $faker->name,
-                'price' => $faker->randomFloat(2, 10, 100,1000), 
+                'price' => $faker->randomFloat(2, 10, 100), 
                 'description' => $faker->realText(200),
             ]);   
          }
