@@ -25,15 +25,6 @@ class ClientesFactory extends Factory
 
     public function definition(): array
     {
-        return [
-            'nome' => fake()->name(),
-            'CPF' => $faker->cpf,
-            'CNPJ' => $faker->cnpj(false),
-            'telefone' => sprintf('(0%s) %s', $faker->areaCode, $faker->landline),
-            'endereco' => $faker->address,
-            'cidade' => $faker->city,
-            'UF' => $faker->stateAbbr,
-        ];
                   
     }
 }

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\GrupoController;
+use App\Http\Controllers\Api\ProductController;
+//use App\Http\Controllers\api\LayoutController;
 
 route::get('users/{id}/role/{idRole}/detach', 'ACL\RoleUserController@detachRoleUser')->name('users.role.detach');
     Route::post('users/{id}/roles', 'ACL\RoleUserController@attachRolesUser')->name('users.roles.attach');
@@ -15,9 +17,27 @@ route::get('users/{id}/role/{idRole}/detach', 'ACL\RoleUserController@detachRole
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//Rota dos clientes
 Route::get('/cliente', [ClienteController::class, 'index']);
 Route::resource('/cliente', ClienteController::class);
+Route::get('cliente/{id}', [ClienteController::class, 'show']); 
+Route::post('cliente', [ClienteController::class, 'store']); 
+Route::put('clientesupdate/{id}', [ClienteController::class, 'update']);
+Route::delete('clientedelete/{id}', [ClienteController::class, 'destroy']);
+
+
 
 Route::get('/grupo', [GrupoController::class, 'index']);
 Route::get('/clientes-grupo/{idGrupo}', [GrupoController::class, 'findClitesGrupo']);
+
+//route::resource('/dashboard', [DashboardController::class, 'index']);
+
+//Rota dos Produtos
+Route::get('/products', [ProductController::class, 'index']); 
+Route::get('products/{id}', [ProductController::class, 'show']); 
+Route::post('products', [ProductController::class, 'store']); 
+Route::put('productsupdate/{id}', [ProductController::class, 'update']);
+Route::delete('productdelete/{id}', [ProductController::class, 'destroy']);
+
+Route::get('/grupo', [GrupoController::class, 'index']);
+Route::get('/produto-grupo/{idGrupo}', [GrupoController::class, 'findClitesGrupo']);
