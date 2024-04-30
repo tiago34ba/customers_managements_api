@@ -8,6 +8,10 @@ use App\Http\Controllers\Api\GrupoController;
 use App\Http\Controllers\Api\ProductController;
 //use App\Http\Controllers\api\LayoutController;
 
+use App\Http\Controllers\Api\ServicesController;
+
+
+
 route::get('users/{id}/role/{idRole}/detach', 'ACL\RoleUserController@detachRoleUser')->name('users.role.detach');
     Route::post('users/{id}/roles', 'ACL\RoleUserController@attachRolesUser')->name('users.roles.attach');
     Route::any('users/{id}/roles/create', 'ACL\RoleUserController@rolesAvailable')->name('users.roles.available');
@@ -25,6 +29,14 @@ Route::post('cliente', [ClienteController::class, 'store']);
 Route::put('clientesupdate/{id}', [ClienteController::class, 'update']);
 Route::delete('clientedelete/{id}', [ClienteController::class, 'destroy']);
 
+
+// Rotas dos Serviços
+Route::get('/service', [ServicesController::class, 'index']);
+Route::resource('/service', ServicesController::class);
+Route::get('service/{id}', [ServicesController::class, 'show']); 
+Route::post('service', [ServicesController::class, 'store']); 
+Route::put('serviceupdate/{id}', [ServicesController::class, 'update']);
+Route::delete('servicedelete/{id}', [ServicesController::class, 'destroy']);
 
 
 Route::get('/grupo', [GrupoController::class, 'index']);

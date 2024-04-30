@@ -5,7 +5,7 @@ use App\Http\Requests\api\CustomRulesRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
 
-class ClienteRequest extends FormRequest
+class ServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,9 @@ class ClienteRequest extends FormRequest
         {
             return [
             'nome'  => ['required'],
-            'cnpj' =>  ['required'],
-            'data_cadastro' => ['required'],
-            'cpf'=> ['required'],
-            'email'=> ['required'],
-            'status'=> ['required'],
+            'tipo' =>  ['required'],
+            'price'=> 'required|numeric|min:0',
+            'description' => 'required|string'
             ];
         }
 
