@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\GrupoController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\PlanController;
+
+
 //use App\Http\Controllers\api\LayoutController;
 
 use App\Http\Controllers\Api\ServicesController;
@@ -21,6 +24,8 @@ route::get('users/{id}/role/{idRole}/detach', 'ACL\RoleUserController@detachRole
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
 //Rota dos clientes
 Route::get('/cliente', [ClienteController::class, 'index']);
 Route::resource('/cliente', ClienteController::class);
@@ -43,6 +48,14 @@ Route::get('/grupo', [GrupoController::class, 'index']);
 Route::get('/clientes-grupo/{idGrupo}', [GrupoController::class, 'findClitesGrupo']);
 
 //route::resource('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/plano', [PlanController::class, 'index']);
+Route::resource('/plano', PlanController::class);
+Route::get('plano/{id}', [PlanController::class, 'show']); 
+Route::post('plano', [PlanController::class, 'store']); 
+Route::put('planoupdate/{id}', [PlanController::class, 'update']);
+Route::delete('planodelete/{id}', [PlanController::class, 'destroy']);
+
 
 //Rota dos Produtos
 Route::get('/products', [ProductController::class, 'index']); 

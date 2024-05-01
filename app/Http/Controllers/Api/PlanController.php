@@ -1,6 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
+
+
+use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Str;
 
 use App\Models\Plan;
 use Illuminate\Http\Request;

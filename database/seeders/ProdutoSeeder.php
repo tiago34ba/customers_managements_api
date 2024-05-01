@@ -22,6 +22,7 @@ class ProdutoSeeder extends Seeder
                 'name' => $faker->city,
                 'details' => $faker->paragraph($nb =2),
                 'price' => $faker->numberBetween($min = 500, $max = 8000),
+                'image'=>$image = $faker->image(null, 640, 480),
                 'description'=> $faker->paragraph($nb =8)
             ]);
          }
